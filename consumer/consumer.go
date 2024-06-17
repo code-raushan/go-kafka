@@ -25,6 +25,6 @@ func main(){
 			log.Fatalf("could not read message: %v", err)
 		}
 
-		fmt.Printf("received msg %s\n", string(msg.Value))
+		fmt.Printf("received msg %s partition %d\n", string(msg.Value), msg.Partition)
 	}
 }
