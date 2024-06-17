@@ -11,13 +11,7 @@ import (
 
 func main(){
 	topic := flag.String("topic", "", "Specify the topic name to create")
-	partitions := flag.String("partitions", "1", "Specify the partition count")
-
-	numOfPartitions, err := strconv.Atoi(*partitions)
-	if err != nil {
-		panic(err.Error())
-	}
-
+	partitions := flag.Int("partitions", 1, "Specify the partition count")
 	flag.Parse()
 
 	if *topic == "" {
@@ -52,7 +46,7 @@ func main(){
 	topicConfigs := []kafka.TopicConfig{
 		{
 			Topic: *topic,
-			NumPartitions: numOfPartitions,
+			NumPartitions: *partitions,
 			ReplicationFactor: 1,
 		},
 	}
